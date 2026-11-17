@@ -58,6 +58,15 @@ map(names(s2_scale_items), \(t) {
 }) |>
   list_rbind() |> as.data.frame() |> print(row.names = FALSE)
 cat("All behaviour items of these rows lie in 0-2:", all(unlist(S2[late, unlist(s2_scale_items)]) %in% c(0, 1, 2, NA)), "\n")
+
+## A range check cannot show that the items sit in the right columns. Share of non-zero responses
+## in the first 431 rows against the last 14: the past items look alike, the desired-behaviour items do not.
+all_items <- unlist(s2_scale_items, use.names = FALSE)
+tibble(item = all_items,
+       pct_nonzero_first_431 = map_dbl(all_items, \(v) round(100 * mean(S2[[v]][-late] > 0, na.rm = TRUE), 1)),
+       n_nonzero_last_14     = map_int(all_items, \(v) sum(S2[[v]][late] > 0, na.rm = TRUE))) |>
+  as.data.frame() |> print(row.names = FALSE)
+
 unnamed <- paste0("V", 57:66)
 cat("Unnamed columns V57-V66: rows with any value:", which(rowSums(!is.na(S2[unnamed])) > 0), "\n")
 
@@ -114,7 +123,7 @@ alpha_row <- function(d, label, f = cronbach_alpha) {
          hostility = f(d[s2_scale_items$past.rival.hostility]),
          ingroup_altruism = f(d[s2_scale_items$past.own.altruism]),
          barrier_crossing = f(d[s2_scale_items$past.rival.alturism]),
-         complete_rows = nrow(drop_na(d[s2_scale_items$past.rival.hostility])))
+         complete_rows_hostility = nrow(drop_na(d[s2_scale_items$past.rival.hostility])))
 }
 bind_rows(alpha_row(S2, "All rows"),
           alpha_row(S2_mf, "Men and women"),

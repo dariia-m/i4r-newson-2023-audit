@@ -292,7 +292,7 @@ tables <- c(
   cor_table(sm1, "Study 1: correlations and descriptive statistics (Table SM1), original and corrected", "tab:s1_sm1",
             paste("All 496 rows of the deposited Study~1 data. Original: gender coded 1~=~men, 2~=~women, 3~=~not stated and",
                   "treated as a number. Corrected: gender coded 0~=~men, 1~=~women (not stated set to missing) and the",
-                  "out-of-range past-spending response removed from the ingroup altruism total. Future OG hostility is desired",
+                  "ingroup altruism total of the respondent with the out-of-range past-spending response set to missing. Future OG hostility is desired",
                   "future outgroup hostility. The supplement reports no mean for gender.", n_cor)),
   s1_reg("sm2", "Study 1: past outgroup hostility with interactions (Table SM2), original and corrected", paste(n_s1_short, n_int, n_bold)),
   s1_reg("sm3", "Study 1: past outgroup hostility with identification and SDO (Table SM3), original and corrected", paste(n_s1_short, n_bold)),

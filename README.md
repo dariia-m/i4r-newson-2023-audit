@@ -69,8 +69,8 @@ Study 1 (`01_study1_checks.R`):
 Study 2 (`02_study2_checks.R`):
 
 - sample size: 445 rows, participant numbers up to 511
-- stored totals of participants 498-511 against the sum of their own items, and the effect of
-  recomputing them
+- stored totals of participants 498-511 against the sum of their own items, the item
+  distributions of these respondents, and the effect of recomputing the totals
 - the reverse-coded SDO items, and the effect of recoding them
 - participants 496 and 328, and the effect of removing participant 496
 - reliability coefficients under several samples

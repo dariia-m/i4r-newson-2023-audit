@@ -94,7 +94,7 @@ study1_versions <- function(S1_raw) {
            threat         = Exp.1hi.0lo,
            p_own_spend_ok = if_else(p_own_spend > 2, NA, p_own_spend),
            ## only five of the six past-altruism items are deposited, so the total cannot be rebuilt
-           ## from items; the bad item value is swapped out of the stored total instead
+           ## from items; subtracting the bad value and adding NA sets that respondent's total to missing
            p.own.Total    = p.own.Total - p_own_spend + p_own_spend_ok)
   pp <- corr |> mutate(Intergroup = p.own.Total - p.rival.Total)
   list("Original" = orig, "Corrected" = corr, "Past - past" = pp)
@@ -216,7 +216,9 @@ s2_rebuild_totals <- function(d, totals = s2_past_totals) {
 ## Both corrected versions: SDO1RC and SDO3RC recoded as 11 - raw and the SDO mean recomputed (missing
 ##                   for participant 328, who skipped one SDO item); participant 496, who answered no
 ##                   behaviour item but has stored totals of 0, removed; predictors re-centred on the
-##                   analysis sample (this only moves the intercept).
+##                   analysis sample. The deposited centred columns are not centred exactly on the
+##                   sample means, so this moves the intercept and, very slightly, the lower-order
+##                   terms of the model with interactions.
 ## Without last 15 : participants 497-511, numbered above the 496 recruited, also removed.
 ## Last 15 rebuilt : all remaining rows kept, totals recomputed from their own items (this corrects
 ##                   the stored totals of participants 498-511).
