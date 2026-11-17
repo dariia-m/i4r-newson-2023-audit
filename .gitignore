@@ -1,0 +1,21 @@
+# Data of the original authors: download from OSF, never commit
+data/
+*.xls
+*.xlsx
+*.csv
+
+# Everything the scripts produce
+output/
+
+# The report itself is not part of this repository
+*.tex
+*.pdf
+*.docx
+*.zip
+
+# R / RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+Rplots.pdf
