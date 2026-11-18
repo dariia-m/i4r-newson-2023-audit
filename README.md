@@ -104,6 +104,16 @@ Study 2
 
 R 4.6.1 with tidyverse 2.0.0, readxl 1.5.0, broom 1.0.13 and here 1.0.2.
 
+`renv.lock` records the exact versions of these packages and of all their dependencies, as
+installed when the results were produced. To install the same versions:
+
+```r
+install.packages("renv")
+renv::restore()
+```
+
+Without renv, the four packages can be installed directly:
+
 ```r
 install.packages(c("tidyverse", "readxl", "broom", "here"))
 ```
